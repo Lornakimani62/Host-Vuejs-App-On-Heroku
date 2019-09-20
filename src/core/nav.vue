@@ -23,6 +23,9 @@
 					<i class="mdi mdi-account"></i><span slot="title">Customers</span>
 				</el-menu-item>
 
+				<el-menu-item index="/leads">
+					<i class="mdi mdi-account"></i><span slot="title">Leads</span>
+				</el-menu-item>
 
 				<el-submenu index="sales" popper-class="main-navigation-submenu">
 

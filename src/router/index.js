@@ -123,6 +123,8 @@ import error from '../views/pages/AdminError.vue'
 import charttest from '../components/message/airtime.vue'
 import Policy from '../views/pages/Policy'
 import LifeCalculator from '../components/termlifeProducts/calculator.vue'
+import leads_index from '../components/leads/leads_index.vue'
+import leads_assign from '../components/leads/leads_assign.vue'
 
 //ui
 import layouts from '../layout'
@@ -718,6 +720,29 @@ const router = new Router({
                 layout: layouts.navLeft,
                 searchable: true,
                 tags: ['Reports'],
+                endUser: true
+            }
+        },
+        ,
+        {
+            path: '/leads',
+            name: 'leads',
+            component: leads_index,
+            meta: {
+                auth: true,
+                layout: layouts.navLeft,
+                searchable: true,
+                endUser: true
+            }
+        },
+        {
+            path: '/leads/assign/:id',
+            name: 'leads',
+            component: leads_assign,
+            meta: {
+                auth: true,
+                layout: layouts.navLeft,
+                searchable: true,
                 endUser: true
             }
         },
