@@ -11,68 +11,46 @@
              <el-table :data="tableData" height="475" style="width: 100%">
 
                  <el-table-column
-                         prop="mpesa_response_id"
-                         sortable
-                         label="ID"
-                         width="60"
-                 ></el-table-column>
-                 <el-table-column
-                         prop="transaction_id"
-                         label="Transaction ID"
+                         prop="receipt_no"
+                         label="Receipt Number"
                          width="150"></el-table-column>
                  <el-table-column
-                         prop="second_name"
-                         label="Second name"
+                         prop="currency"
+                         label="Currency"
                          width="150"></el-table-column>
                  <el-table-column
-                         prop="last_name"
-                         label="Last name"
-                         width="150"
-                 ></el-table-column>
+                         prop="fullname"
+                         label="Full Name"
+                         width="200"></el-table-column>
                  <el-table-column
-                         prop="key_id"
-                         label="Key ID"
-                         width="150"
-                 ></el-table-column>
-                 <el-table-column
-                         prop="subscriber_nr"
-                         label="Subscriber no"
-                         width="150"
-                 ></el-table-column>
-                 <el-table-column
-                         prop="transaction_date"
-                         label="Transaction Date"
-                         width="150"
-                 ></el-table-column>
-                 <el-table-column
-                         prop="amount_received"
+                         prop="amount"
                          label="Amount received"
                          sortable
                          width="180"
                  ></el-table-column>
                  <el-table-column
-                         prop="message_id"
-                         label="Message ID"
+                         prop="payment_type"
+                         label="Payment Type"
                          width="150"
                  ></el-table-column>
                  <el-table-column
-                         prop="processor_id"
-                         label="Processor ID"
+                         prop="payment_channel"
+                         label="Payment Channel"
                          width="150"></el-table-column>
                  <el-table-column
-                         prop="account_nr"
-                         label="Account no"
+                         prop="mobile_number"
+                         label="Mobile Number"
                          width="150"></el-table-column>
-                 <el-table-column
-                         prop="current_balance"
-                         label="Current balance"
+                 <el-table-column fixed="right"
+                         prop="cover_name"
+                         label="Cover Name"
+                         width="150"></el-table-column>
+                 <el-table-column fixed="right"
+                         prop="policy_no"
+                         label="Policy Number"
                          width="150"
                  ></el-table-column>
-                 <el-table-column
-                         prop="short_code"
-                         label="Short Code"
-                         width="150"></el-table-column>
-
+<!-- 
 
                  <el-table-column fixed="right" label="Operations" width="150">
 
@@ -84,7 +62,7 @@
 
                          <el-button style="padding-right: 10px" size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
                      </template>
-                 </el-table-column>
+                 </el-table-column> -->
 
              </el-table>
          </div>
@@ -124,7 +102,7 @@
          methods: {
 
              getCovers() {
-                 let url = this.url + '/mpesaresponses';
+                 let url = this.url + '/payments';
 
                  // let url = 'http://142.93.172.106:3002/api/pacovers';
                  this.axios.get(url, {
@@ -137,7 +115,8 @@
                      this.excelForm = Object.values(this.tableData);
 
                  }).catch(err =>{
-                     this.$router.push('login');
+                     console.log(err)
+                    //  this.$router.push('login');
                  });
              },
              exportXlsx(){

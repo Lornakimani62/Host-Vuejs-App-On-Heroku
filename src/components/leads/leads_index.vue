@@ -6,25 +6,8 @@
 		</el-row>
 		<el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
 			<div class=" table-box card-base card-shadow--medium">
-				<!--Displays the currency table-->
+				<!--Displays the currency table--> 
 				<el-table :data="tableData" height="475" width="100%">
-					<el-table-column
-							prop="leads_id"
-							sortable
-							label="ID"
-					></el-table-column>
-					<el-table-column
-							prop="product_name"
-							sortable
-							label="Product Name"
-							width="220"
-					></el-table-column>
-					<el-table-column
-							prop="cover_name"
-							sortable
-							label="Cover Name"
-							width="160"
-					></el-table-column>
 					<el-table-column
 							prop="id_no"
 							sortable
@@ -35,6 +18,18 @@
 							prop="fullname"
 							sortable
 							label="Full Name"
+							width="160"
+					></el-table-column>
+					<el-table-column
+							prop="email"
+							sortable
+							label="Email"
+							width="200"
+					></el-table-column>
+					<el-table-column
+							prop="phone_no"
+							sortable
+							label="Phone Number"
 							width="160"
 					></el-table-column>
 					<el-table-column
@@ -54,14 +49,26 @@
 							sortable
 							label="Term"
 					></el-table-column>
-					<el-table-column sortable label="Status" width="100">
+					<el-table-column
+							prop="product_name"
+							sortable
+							label="Product Name"
+							width="220"
+					></el-table-column>
+					<el-table-column
+							prop="cover_name"
+							sortable
+							label="Cover Name"
+							width="160"
+					></el-table-column>
+					<el-table-column sortable label="Status" width="100" fixed="right">
 						<template slot-scope="scope">
 							<el-tag
 									:type="scope.row.lead_status === 'PENDING' ? 'danger' : 'primary'" disable-transitions>
 								{{scope.row.lead_status}}</el-tag>
 						</template>
 					</el-table-column>
-					<el-table-column  label="Operations" width="180">
+					<el-table-column  label="Operations" width="180" fixed="right">
 						<template slot-scope="scope">
 							<el-button  size="mini" slot="reference" type="primary" @click="handleAssign(scope.$index, scope.row)">ASSIGN</el-button>
 						</template>

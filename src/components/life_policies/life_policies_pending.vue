@@ -8,16 +8,9 @@
         </el-row>
         <div class="table-box card-base card-shadow--medium">
             <el-table :data="tableData" height="475" style="width: 100%">
-
-                <el-table-column
-                        prop="life_policy_id"
-                        sortable
-                        label="ID"
-                        width="60"
-                ></el-table-column>
                 <el-table-column
                         prop="policy_no"
-                        label="Policy no"
+                        label="Policy Number"
                         width="150"></el-table-column>
                 <el-table-column
                         prop="cover_name"
@@ -29,37 +22,43 @@
                         width="150"
                 ></el-table-column>
                 <el-table-column
-                        prop="premium"
+                        prop="monthly_premium"
                         label="Premium"
                         width="150"
                 ></el-table-column>
                 <el-table-column
-                        prop="applicant_dob"
-                        label="Applicant DOB"
-                        width="150"
-                ></el-table-column>
-                    <el-table-column
-                        prop="applicant_phone_number"
-                        label="Applicant Phone No"
+                        prop="sum_assured"
+                        label="Sum Assured"
                         width="150"
                 ></el-table-column>
                 <el-table-column
-                        prop="applicant_email"
-                        label="Applicant Email"
+                        prop="projected_maturity"
+                        label="Projected Maturity"
                         width="150"
                 ></el-table-column>
                 <el-table-column
-                        prop="applicant_name"
+                        prop="id_no"
+                        sortable
+                        label="ID Number"
+                        width="150"
+                ></el-table-column>
+                <el-table-column
+                        prop="age"
+                        label="Applicant Age"
+                        width="150"
+                ></el-table-column>
+                <el-table-column
+                        prop="fullname"
                         label="Applicant name"
                         width="150"
                 ></el-table-column>
-                <el-table-column
+                <!-- <el-table-column
                         prop="applicant_idno"
                         label="Applicant ID"
                         sortable
                         width="180"
-                ></el-table-column>
-                <el-table-column
+                ></el-table-column> -->
+                <!-- <el-table-column
                         prop="applicant_idfront"
                         label="Applicant ID Front"
                         width="150"
@@ -71,12 +70,12 @@
                 <el-table-column
                         prop="applicant_photo"
                         label="Applicant Photo"
-                        width="150"></el-table-column>
-                <el-table-column
+                        width="150"></el-table-column> -->
+                <!-- <el-table-column
                         prop="application_date"
                         label="Application date"
                         width="150"
-                ></el-table-column>
+                ></el-table-column> -->
                 <el-table-column
                         prop="start_date"
                         label="Start date"
@@ -85,14 +84,14 @@
                         prop="end_date"
                         label="End date"
                         width="150"></el-table-column>
-                <el-table-column
+                <!-- <el-table-column
                         prop="declaration_goodhealth"
                         label="Declaration fo Good Health"
                         width="150"></el-table-column>
                 <el-table-column
                         prop="notin_goodhealth"
                         label="Not in good Health"
-                        width="150"></el-table-column>
+                        width="150"></el-table-column> -->
                 <!--<el-table-column-->
                         <!--prop="rider1_included"-->
                         <!--label="Rider 1"-->
@@ -149,7 +148,7 @@
 
         methods: {
             getPolicies(){
-                let url = this.url  + '/lifepolicypending';
+                let url =  'https://capex.wazinsure.com:4443/api/policies';
                 this.axios.get(url, {headers: {'Content-Type': 'application/json',
                             'Authorization': 'Bearer '+ this.token
                         }}).then((response) => {
