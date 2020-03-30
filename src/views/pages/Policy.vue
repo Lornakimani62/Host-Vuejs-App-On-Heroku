@@ -7,10 +7,10 @@
 		<div class="invoice bg-white black-text">
 			<div class="invoice-top">
 				<div class="logo">
-					<img src="@/assets/images/logo.svg" alt="logo">
+					<img src="@/assets/images/logo.png" alt="logo">
 				</div>
 				<div class="info">
-					<h2>Wazinsure Insurance Policy</h2>
+					<h2>Capex Life Insurance Policy</h2>
 					<p>wazinsure@wazinsure.com<br>020-978-8782</p>
 				</div><!--End Info-->
 
@@ -27,12 +27,12 @@
 				<!--<img src="@/assets/images/avatar.jpg" alt="client logo">-->
 				<!--</div>-->
 				<div class="info">
-					<h6>Policy holder: <strong>{{policy.applicant_name}}</strong></h6>
-					<h6>ID No: <strong>{{policy.applicant_idno}}</strong></h6>
+					<h6>Policy holder: <strong>{{policy.fullname}}</strong></h6>
+					<h6>ID No: <strong>{{policy.id_no}}</strong></h6>
 				</div>
 				<div class="project">
 					<h6>Product name: {{policy.product_name}}</h6>
-					<h6>Cover name: {{result.cover_name}} 	</h6>
+					<h6>Cover name: {{policy.cover_name}} 	</h6>
 				</div>
 			</div><!--End Invoice Mid-->
 
@@ -113,10 +113,11 @@
 			//Get the specific policy details
 			getPolicy(){
 
-				this.axios.get(this.url + '/papolicies/'+this.$route.params.id, {headers: {'Content-Type': 'application/json',
+				this.axios.get(this.url + '/policies/'+this.$route.params.id, {headers: {'Content-Type': 'application/json',
 						'Authorization': 'Bearer '+ this.token
 					}}).then((response) => {
 					this.policy=response.data.data;
+					console.log(this.policy)
 				});
 			},
 			getDate(){
@@ -169,7 +170,7 @@
 						'Authorization': 'Bearer '+ this.token
 					}}).then((response) => {
 					this.products=response.data.data;
-					this.getSpecificProduct();
+					this.getSpecificProduct()
 
 				});
 			},
