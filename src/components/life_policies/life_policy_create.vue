@@ -13,47 +13,44 @@
                 <el-input v-model="form.policy_no"></el-input>
             </el-form-item>
 
-            <el-form-item label="Choose cover:" prop="currency">
-                <el-dropdown placement="bottom-start" v-model="form.cover_name" @command="handleCovers" >
-                    <span class="el-dropdown-link">{{form.cover_name}}<i class="el-icon-arrow-down el-icon--right"></i></span>
-                    <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item  v-bind:key="cover.pa_cover_id" v-for="cover in covers" :command=cover.cover_name>{{cover.cover_name}}</el-dropdown-item>
-                    </el-dropdown-menu>
-                </el-dropdown>
+>
+
+
+            <el-form-item label="Product Name" prop="product_name">
+                <el-input type="text" v-model="form.product_name"></el-input>
             </el-form-item>
 
-            <el-form-item label="Choose product:" prop="product">
-                <el-dropdown placement="bottom-start" v-model="form.product" @command="handleProducts" >
-                    <span class="el-dropdown-link">{{form.product}}<i class="el-icon-arrow-down el-icon--right"></i></span>
-                    <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item  v-bind:key="product.product_id" v-for="product in products" :command=product.product_name>{{product.product_name}}</el-dropdown-item>
-                    </el-dropdown-menu>
-                </el-dropdown>
+            <el-form-item label="Cover Name" prop="cover_name">
+                <el-input type="text" v-model="form.cover_name"></el-input>
             </el-form-item>
 
             <el-form-item label="Premium" prop="premium">
-                <el-input type="number" v-model="form.premium"></el-input>
+                <el-input type="number" v-model="form.monthly_premium"></el-input>
             </el-form-item>
 
-            <el-form-item label="DOB" prop="applicant_dob">
-                <el-col :span="11">
-                    <el-date-picker value-format="yyyy-MM-dd" type="date" placeholder="Pick a date" v-model="form.applicant_dob" style="width: 70%;"></el-date-picker>
-                </el-col></el-form-item>
 
-            <el-form-item label="Applicant name" prop="applicant_name">
-                <el-input v-model="form.applicant_name"></el-input>
+            <el-form-item label="Age" prop="age">
+                <el-input v-model="form.age"></el-input>
+            </el-form-item>
+
+            <el-form-item label="Term" prop="term">
+                <el-input v-model="form.term"></el-input>
+            </el-form-item>
+
+            <el-form-item label="Applicant name" prop="fullname">
+                <el-input v-model="form.fullname"></el-input>
             </el-form-item>
 
             <el-form-item label="Applicant email" prop="applicant_email">
                 <el-input  v-model="form.applicant_email"></el-input>
             </el-form-item>
 
-            <el-form-item label="Applicant Phone no" prop="applicant_phone_number">
+            <el-form-item label="Applicant phone no" prop="applicant_phone_number">
                 <el-input type="number" v-model="form.applicant_phone_number"></el-input>
             </el-form-item>
 
-            <el-form-item label="Applicant ID no" prop="applicant_idno">
-                <el-input type="number" v-model="form.applicant_idno"></el-input>
+            <el-form-item label="Applicant ID no" prop="id_no">
+                <el-input type="number" v-model="form.id_no"></el-input>
             </el-form-item>
 
             <el-form-item  label="Upload application ID Front:" prop="applicant_idfront">
@@ -84,22 +81,6 @@
                 </el-col>
             </el-form-item>
 
-            <el-form-item label="Declaration of Good Health" prop="declaration_goodhealth">
-                <el-input autosize type="textarea" v-model="form.declaration_goodhealth"></el-input>
-            </el-form-item>
-
-            <el-form-item label="Not in Good Health" prop="notin_goodhealth">
-                <el-input v-model="form.notin_goodhealth"></el-input>
-            </el-form-item>
-
-                <el-form-item label="Rider Benefits" prop="rider_included">
-                    <el-row>
-                        <el-checkbox v-model="form.rider1_included">Rider 1 included</el-checkbox>
-                        <el-checkbox v-model="form.rider2_included">Rider 2 included</el-checkbox>
-                        <el-checkbox v-model="form.rider3_included">Rider 3 included</el-checkbox>
-                    </el-row>
-                </el-form-item>
-
             <el-form-item>
                 <el-button type="primary" @click="onSubmit('form')">SAVE</el-button>
                 <el-button  @click="cancelClicked">CLOSE</el-button>
@@ -122,9 +103,6 @@
                     activation_status: 'PENDING',
                     applicant_idfront: '',
                     activated_on:'01/02/2018',
-                    rider1_included:false,
-                    rider2_included:false,
-                    rider3_included:false
                 },
                 notificationForm: {
                     email:'',
@@ -146,16 +124,16 @@
                     product_name: [
                         {required: true, message: 'Please enter product name', trigger: 'blur'},
                     ],
-                    premium: [
+                    monthly_premium: [
                         {required: true, message: 'Please enter  premium', trigger: 'blur'},
                     ],
                     applicant_dob: [
                         { type: 'date', required: true, message: 'Please pick a date', trigger: 'change' }
                     ],
-                    applicant_name: [
+                    fullname: [
                         {required: true, message: 'Please enter applicant\'s name', trigger: 'blur'},
                     ],
-                    applicant_idno: [
+                    id_no: [
                         {required: true, message: 'Please enter benefit description', trigger: 'blur'},
                     ],
                     applicant_email: [
@@ -217,10 +195,10 @@
                 formData.append('policy_no', this.form.policy_no);
                 formData.append('cover_name',this.form.cover_name);
                 formData.append('product_name',this.form.product_name);
-                formData.append('premium',this.form.premium);
-                formData.append('applicant_dob',this.form.applicant_dob);
-                formData.append('applicant_name',this.form.applicant_name);
-                formData.append('applicant_idno', this.form.applicant_idno);
+                formData.append('monthly_premium',this.form.monthly_premium);
+                formData.append('age',this.age);
+                formData.append('fullname',this.form.fullname);
+                formData.append('id_no', this.form.id_no);
                 formData.append('applicant_phone_number', this.form.applicant_phone_number);
                 formData.append('applicant_email', this.form.applicant_email);
                 formData.append('applicant_idfront',this.form.applicant_idfront);
@@ -229,16 +207,11 @@
                 formData.append('application_date',this.form.application_date);
                 formData.append('start_date',this.form.start_date);
                 formData.append('end_date',this.form.end_date);
-                formData.append('declaration_goodhealth',this.form.declaration_goodhealth);
-                formData.append('notin_goodhealth',this.form.notin_goodhealth);
-                formData.append('rider1_included',this.form.rider1_included);
-                formData.append('rider2_included',this.form.rider2_included);
-                formData.append('rider3_included',this.form.rider3_included);
                 formData.append('activation_status',this.form.activation_status);
                 formData.append('activation_comments',this.form.activation_comments);
                 formData.append('activated_by',this.form.activated_by);
                 formData.append('activated_on',this.form.activated_on);
-                let url = this.url + '/lifepolicies';
+                let url = this.url + '/policypayment';
                 this.axios.post(url, formData, {headers: {'Content-Type': 'multipart/form-data',
                         'Authorization': 'Bearer '+this.token
                     }}).then((response)=> {
@@ -246,8 +219,8 @@
                         this.notificationForm.email=this.form.applicant_email;
                         this.notificationForm.phone_number=this.form.applicant_phone_number;
 
-                        this.emailNotification();
-                        this.smsNotification();
+                        // this.emailNotification();
+                        // this.smsNotification();
                         this.message=response.data.message;
                         this.success();
                         this.$router.push('/lifepolicies/pending');
@@ -257,6 +230,7 @@
                         this.error();
                     }
                 }).catch(err =>{
+                    console.log(err)
                     if (err.status === 'Please log in') {
                         this.message='Token Expired. Please Log in';
                         this.error()
