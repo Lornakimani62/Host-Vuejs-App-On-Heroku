@@ -3,7 +3,7 @@
 <div>
 
     <el-row id="space">
-        <el-button  type="primary" v-on:click="addClicked" icon="el-icon-plus">Add New</el-button>
+        <!-- <el-button  type="primary" v-on:click="addClicked" icon="el-icon-plus">Add New</el-button> -->
         <el-button type="warning" icon="el-icon-info" v-on:click="exportXlsx">Export Excel</el-button>
     </el-row>
 
@@ -31,12 +31,6 @@
                     label="ID No"
                     width="100"
             ></el-table-column>
-            <el-table-column
-                    prop="dob"
-                    label="DOB"
-                    sortable
-                    width="205"
-                  ></el-table-column>
             <el-table-column
                     prop="kra_pin"
                     label="KRA Pin"
