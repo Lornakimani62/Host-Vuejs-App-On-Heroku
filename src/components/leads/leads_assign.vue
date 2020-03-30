@@ -3,14 +3,9 @@
 		<h2 class="animated fadeInDown" >Edit Entry</h2>
 		<!-- Displays the currency edit form-->
 		<el-form ref="form" :rules="rules" :model="form" label-width="120px">
-			<el-form-item label="Choose agent:" prop="agent">
-				<el-dropdown placement="bottom-start" v-model="agentsForm.username" @command="handleAgents" >
-					<span class="el-dropdown-link">{{form.assigned_to}}<i class="el-icon-arrow-down el-icon--right"></i></span>
-					<el-dropdown-menu slot="dropdown">
-						<el-dropdown-item  v-bind:key="agent.sales_agents_id" v-for="agent in agentsForm" :command=agent.username>{{agent.fullname}}</el-dropdown-item>
-					</el-dropdown-menu>
-				</el-dropdown>
-			</el-form-item>
+            <el-form-item label="Follow Up Agent" prop="assigned_to">
+                <el-input type="text" v-model="form.assigned_to"></el-input>
+            </el-form-item>
 			<el-form-item>
 				<el-button type="primary" @click="onSubmit()">Assign</el-button>
 				<el-button v-on:click="cancelClicked">Cancel</el-button>
@@ -26,7 +21,8 @@
 			return{
 				id: '',
 				form:{
-					assigned_to:'Choose an agent:'
+					assigned_to:'',
+					lead_status:"ASSIGNED"
 				},
 				agentsForm:{},
 				token: '',
@@ -58,7 +54,7 @@
 							if (response.status == 200){
 								this.message=response.data.message;
 								this.success();
-								this.$router.push('/currency');
+								this.$router.push('/leads');
 							}
 						})
 							.catch(err =>{
