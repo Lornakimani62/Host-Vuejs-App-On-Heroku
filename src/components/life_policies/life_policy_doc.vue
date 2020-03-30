@@ -7,7 +7,7 @@
 		<div class="invoice bg-white black-text">
 			<div class="invoice-top">
 				<div class="logo">
-					<img src="@/assets/images/logo.svg" alt="logo">
+					<img src="@/assets/images/logo.png" alt="logo">
 				</div>
 				<div class="info">
 					<h2>Wazinsure Insurance Policy</h2>
@@ -112,11 +112,13 @@
 
 			//Get the specific policy details
 			getPolicy(){
-
-				this.axios.get(this.url + '/lifepolicies/'+this.$route.params.id, {headers: {'Content-Type': 'application/json',
+					console.log("--1--")
+				this.axios.get(this.url + '/policies/'+this.$route.params.id, 
+				{headers: {'Content-Type': 'application/json',
 						'Authorization': 'Bearer '+ this.token
 					}}).then((response) => {
 					this.policy=response.data.data;
+					console.log(response.data.data)
 				});
 			},
 			getDate(){
