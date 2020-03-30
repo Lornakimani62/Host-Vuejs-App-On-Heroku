@@ -1,9 +1,9 @@
- <template>
+<template>
      <!--Mpesa respons Table-->
      <div>
 
          <el-row id="space">
-             <el-button  type="primary" v-on:click="addClicked" icon="el-icon-plus">Add New</el-button>
+             <!-- <el-button  type="primary" v-on:click="addClicked" icon="el-icon-plus">Add New</el-button> -->
              <el-button type="warning" icon="el-icon-info" v-on:click="exportXlsx">Export Excel</el-button>
          </el-row>
 
@@ -11,45 +11,67 @@
              <el-table :data="tableData" height="475" style="width: 100%">
 
                  <el-table-column
-                         prop="receipt_no"
-                         label="Receipt Number"
+                         prop="mpesa_response_id"
+                         sortable
+                         label="ID"
+                         width="60"
+                 ></el-table-column>
+                 <el-table-column
+                         prop="transaction_id"
+                         label="Transaction ID"
                          width="150"></el-table-column>
                  <el-table-column
-                         prop="currency"
-                         label="Currency"
+                         prop="second_name"
+                         label="Second name"
                          width="150"></el-table-column>
                  <el-table-column
-                         prop="fullname"
-                         label="Full Name"
-                         width="200"></el-table-column>
+                         prop="last_name"
+                         label="Last name"
+                         width="150"
+                 ></el-table-column>
                  <el-table-column
-                         prop="amount"
+                         prop="key_id"
+                         label="Key ID"
+                         width="150"
+                 ></el-table-column>
+                 <el-table-column
+                         prop="subscriber_nr"
+                         label="Subscriber no"
+                         width="150"
+                 ></el-table-column>
+                 <el-table-column
+                         prop="transaction_date"
+                         label="Transaction Date"
+                         width="150"
+                 ></el-table-column>
+                 <el-table-column
+                         prop="amount_received"
                          label="Amount received"
                          sortable
                          width="180"
                  ></el-table-column>
                  <el-table-column
-                         prop="payment_type"
-                         label="Payment Type"
+                         prop="message_id"
+                         label="Message ID"
                          width="150"
                  ></el-table-column>
                  <el-table-column
-                         prop="payment_channel"
-                         label="Payment Channel"
+                         prop="processor_id"
+                         label="Processor ID"
                          width="150"></el-table-column>
                  <el-table-column
-                         prop="mobile_number"
-                         label="Mobile Number"
+                         prop="account_nr"
+                         label="Account no"
                          width="150"></el-table-column>
-                 <el-table-column fixed="right"
-                         prop="cover_name"
-                         label="Cover Name"
-                         width="150"></el-table-column>
-                 <el-table-column fixed="right"
-                         prop="policy_no"
-                         label="Policy Number"
+                 <el-table-column
+                         prop="current_balance"
+                         label="Current balance"
                          width="150"
                  ></el-table-column>
+                 <el-table-column
+                         prop="short_code"
+                         label="Short Code"
+                         width="150"></el-table-column>
 <!-- 
 
                  <el-table-column fixed="right" label="Operations" width="150">
@@ -102,7 +124,7 @@
          methods: {
 
              getCovers() {
-                 let url = this.url + '/payments';
+                 let url = this.url + '/mpesaresponses';
 
                  // let url = 'http://142.93.172.106:3002/api/pacovers';
                  this.axios.get(url, {
@@ -115,8 +137,7 @@
                      this.excelForm = Object.values(this.tableData);
 
                  }).catch(err =>{
-                     console.log(err)
-                    //  this.$router.push('login');
+                     this.$router.push('login');
                  });
              },
              exportXlsx(){
