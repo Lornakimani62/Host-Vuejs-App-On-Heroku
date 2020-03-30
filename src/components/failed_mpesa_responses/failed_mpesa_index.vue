@@ -3,7 +3,7 @@
     <div>
 
         <el-row id="space">
-            <el-button  type="primary" v-on:click="addClicked" icon="el-icon-plus">Add New</el-button>
+            <!-- <el-button  type="primary" v-on:click="addClicked" icon="el-icon-plus">Add New</el-button> -->
             <el-button type="warning" icon="el-icon-info" v-on:click="exportXlsx">Export Excel</el-button>
         </el-row>
 
