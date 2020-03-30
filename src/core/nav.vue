@@ -48,9 +48,9 @@
 						</el-menu-item>
 					</el-submenu>
 
-					<el-menu-item index="/payments">
+					<!-- <el-menu-item index="/payments">
 						<i class="mdi mdi-cash-multiple"></i><span slot="title">Other Payments</span>
-					</el-menu-item>
+					</el-menu-item> -->
 
 				</el-submenu>
 
@@ -63,9 +63,9 @@
 						<template slot="title">
 							<i class="mdi mdi-flower"></i><span>Life</span>
 						</template>
-							<el-menu-item index="/lifecalculator">
+							<!-- <el-menu-item index="/lifecalculator">
 								<i class="mdi mdi-calculator"></i><span slot="title">Life Calculator</span>
-							</el-menu-item>
+							</el-menu-item> -->
 
 						<el-menu-item index="/lifepolicies/pending">
 							<i class="mdi mdi-flower"></i><span slot="title">Pending</span>
@@ -76,9 +76,9 @@
 						</el-menu-item>
 
 					</el-submenu>
-					<el-menu-item index="/travelpolicies">
+					<!-- <el-menu-item index="/travelpolicies">
 						<i class="mdi mdi-airplane"></i><span slot="title">Travel</span>
-					</el-menu-item>
+					</el-menu-item> -->
 
 				</el-submenu>
 
@@ -122,7 +122,7 @@
 					</el-submenu>
 				</el-submenu>
 
-				<el-submenu index="quotations" popper-class="main-navigation-submenu">
+				<!-- <el-submenu index="quotations" popper-class="main-navigation-submenu">
 					<template slot="title">
 						<i class="mdi mdi-animation"></i><span>Quotations</span>
 					</template>
@@ -130,7 +130,7 @@
 
 
 
-				</el-submenu>
+				</el-submenu> -->
 
 
 				<div class="el-menu-item-group__title" style="padding-top: 4px;"><span>REPORTS</span></div>
