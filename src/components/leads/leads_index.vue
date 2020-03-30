@@ -61,6 +61,12 @@
 							label="Cover Name"
 							width="160"
 					></el-table-column>
+					<el-table-column
+							prop="lead_create_on"
+							sortable
+							label="Created On"
+							width="160"
+					></el-table-column>
 					<el-table-column sortable label="Status" width="100" fixed="right">
 						<template slot-scope="scope">
 							<el-tag
@@ -97,8 +103,13 @@
 				this.axios.get(url, {headers: {'Content-Type': 'application/json',
 						'Authorization': 'Bearer '+ this.token
 					}}).then((response) => {
-					this.tableData=response.data.data;
+				for (var i = 0; i < response.data.data.length; i++) {
+				 if (response.data.data[i].lead_status !== "ASSIGNED")
+					this.tableData.push(response.data.data[i]);;
 					this.excelForm = Object.values(this.tableData);
+					console.log(this.tableData)
+          			}
+
 
 				}).catch(err =>{
 					this.$router.push('login');
