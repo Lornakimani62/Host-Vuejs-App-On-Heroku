@@ -195,7 +195,7 @@
             onSubmit(form){
                 this.$refs[form].validate((valid) => {
                     if (valid) {
-                        let url = this.url + '/lifepolicies/'+this.id ;
+                        let url = this.url + '/policies/'+this.id ;
                         this.axios.put(url, this.form, {headers: {'Content-Type': 'application/json',
                                 'Authorization': 'Bearer '+this.token
                             }}).then((response)=> {
