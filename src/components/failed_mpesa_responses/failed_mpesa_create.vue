@@ -2,7 +2,7 @@
     <!--Create Failed transaction za mpesa-->
     <div class="page-table scrollable">
         <el-form ref="form" :model="form" :rules="rules"  label-width="150px">
-            <h2 class="animated fadeInDown" >Add new transaction</h2>
+            <!-- <h2 class="animated fadeInDown" >Add new transaction</h2> -->
 
             <el-form-item label="Transaction ID" prop="transaction_id">
                 <el-input v-model="form.transaction_id"></el-input>
