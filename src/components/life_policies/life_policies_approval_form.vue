@@ -1,7 +1,7 @@
 <template>
     <div class="page-table scrollable">
         <el-form ref="form"  :model="form" :rules="rules"  label-width="200px">
-            <h2 class="animated fadeInDown" >Add new Policy</h2>
+            <!-- <h2 class="animated fadeInDown" >Add new Policy</h2> -->
             <el-form-item label="Policy no" prop="policy_no">
                 <el-input disabled v-model="form.policy_no"></el-input>
             </el-form-item>
@@ -129,7 +129,7 @@
             onSubmit(form){
                 this.$refs[form].validate((valid) => {
                     if (valid) {
-                        let url = this.url + '/lifepolicies/'+this.id ;
+                        let url = this.url + '/policies/'+this.id ;
                         this.axios.put(url, this.form, {headers: {'Content-Type': 'application/json',
                                 'Authorization': 'Bearer '+this.token
                             }}).then((response)=> {
@@ -137,8 +137,8 @@
                                 this.notificationForm.email=this.form.applicant_email;
                                 this.notificationForm.phone_number=this.form.applicant_phone_number;
                                if(this.form.activation_status==='APPROVED'){
-                                    this.emailNotification();
-                                    this.smsNotification();
+                                    // this.emailNotification();
+                                    // this.smsNotification();
                                 }
                                 this.message=response.data.message;
                                 this.success();
@@ -161,13 +161,12 @@
                     type: 'success'
                 });},
             getPolicy(){
-                let url = this.url + '/lifepolicies/'+this.$route.params.id;
+                let url = this.url + '/policies/'+this.$route.params.id;
                 this.axios.get(url, {headers: {'Content-Type': 'application/json',
                         'Authorization': 'Bearer '+ this.token
                     }}).then((response) => {
                     this.form=response.data.data;
                 }).catch(err =>{
-                    this.$router.push('login');
                 });
             },
 
