@@ -1,6 +1,6 @@
 {
- "name": "Capex Portal",
- "short_name": "capex",
+ "name": "Inventory Management",
+ "short_name": "inventory management",
  "manifest_version": 1,
  "version": "1.0.0",
  "start_url": ".",

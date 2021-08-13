@@ -2,7 +2,7 @@
 	<vue-scroll class="login-page align-vertical">
 		<div class="form-wrapper align-vertical-middle">
 			<div class="form-box card-base card-shadow--extraLarge">
-				<img class="image-logo" src="@/assets/images/logo.png" alt="logo"/>
+				<!-- <img class="image-logo" src="@/assets/images/logo.png" alt="logo"/> -->
 				
 				<float-label class="styled">
 					<input @input="changed" type="email" v-model="authData.username" placeholder="Username">
